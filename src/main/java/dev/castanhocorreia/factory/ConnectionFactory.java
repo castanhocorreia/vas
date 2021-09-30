@@ -10,9 +10,9 @@ public final class ConnectionFactory {
     public DataSource dataSource;
 
     public ConnectionFactory() {
-        final String url = "jdbc:mysql://172.17.0.2:3306/store";
-        final String user = "castanho";
-        final String password = "mysql";
+        final String url = "...";
+        final String user = "...";
+        final String password = "...";
         ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
         comboPooledDataSource.setJdbcUrl(url);
         comboPooledDataSource.setUser(user);
