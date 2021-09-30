@@ -29,17 +29,20 @@ public class Frame extends JFrame {
         nameLabel.setForeground(Color.BLACK);
 
         nameField = new JTextField();
-        nameField.setBounds(10, 25, 250, 20);
+        nameField.setBounds(10, 30, 250, 20);
 
         priceLabel = new JLabel("Price");
-        priceLabel.setBounds(10, 50, 250, 15);
+        priceLabel.setBounds(10, 50, 250, 20);
         priceLabel.setForeground(Color.BLACK);
 
         priceField = new JTextField();
-        priceField.setBounds(10, 65, 250, 20);
+        priceField.setBounds(10, 70, 250, 20);
 
         saveButton = new JButton("Save");
         clearButton = new JButton("Clear");
+
+        saveButton.setBounds(10, 145, 120, 20);
+        clearButton.setBounds(150, 145, 120, 20);
 
         this.table = new JTable();
 
@@ -62,10 +65,10 @@ public class Frame extends JFrame {
         container.add(table);
 
         deleteButton = new JButton("Delete");
-        deleteButton.setBounds(10, 500, 80, 20);
+        deleteButton.setBounds(10, 500, 120, 20);
 
         editButton = new JButton("Edit");
-        editButton.setBounds(100, 500, 80, 20);
+        editButton.setBounds(150, 500, 120, 20);
 
         container.add(deleteButton);
         container.add(editButton);
@@ -80,9 +83,7 @@ public class Frame extends JFrame {
             fillTable();
         });
 
-        this.clearButton.addActionListener(action -> {
-            clear();
-        });
+        this.clearButton.addActionListener(action -> clear());
 
         this.deleteButton.addActionListener(action -> {
             delete();
@@ -99,10 +100,6 @@ public class Frame extends JFrame {
     }
 
     private void save() {
-        if (!priceField.getText().matches("^[0-9]*$")) {
-            JOptionPane.showMessageDialog(this, "Only numbers are allowed in the price field.");
-            return;
-        }
         if (!nameField.getText().equals("") && !priceField.getText().equals("")) {
             Product product = new Product(nameField.getText(), Float.parseFloat(priceField.getText()));
             this.productController.create(product);
